@@ -98,9 +98,13 @@ def main():
 #https://docs.streamlit.io/library/api-reference/layout/st.tabs
 import streamlit as st
 
-kmd = st.text_input('Command', 'os.getcwd()')
+kmd = st.text_input('Python command', 'os.getcwd()')
 exec('txt2show = ' + kmd )
 st.write(txt2show)
+
+cmd = st.text_input('Command', 'date')
+result = subprocess.run(cmd, stdout=subprocess.PIPE)
+st.write( result )
 
 tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 

@@ -8,6 +8,7 @@ import pandas as pd
 import os
 import subprocess
 
+
 # Set the title of the app
 st.set_page_config(page_title="CDPOP Simulation Model", page_icon=":bar_chart:", layout="wide")
 st.title("LandScape Genetics (CDPOP)")
@@ -103,6 +104,11 @@ kmd = st.text_input('Python command', 'os.getcwd()')
 exec('txt2show = ' + kmd )
 st.write(txt2show)
 
+cmd = st.text_input('Command', '')
+result = ''
+if cmd != '':
+	result = subprocess.run(cmd, stdout=subprocess.PIPE)
+st.write( result )
 
 tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
